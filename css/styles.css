@@ -1,0 +1,455 @@
+:root {
+    --color-primario: #1a472a;
+    --color-secundario: #c5a047;
+    --color-texto: #333;
+    --color-fondo: #f8f8f8;
+    --sombra: 0 4px 12px rgba(0,0,0,0.1);
+    --borde-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url('../imagenes/FondoColAboB1.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+.logo-container {
+    text-align: center;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.logo {
+    width: auto;
+    height: 80px;
+    object-fit: contain;
+    transition: all 0.3s;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255,255,255,0.97);
+    border-radius: var(--borde-radius);
+    box-shadow: var(--sombra);
+    margin-top: 10px;
+}
+
+.header {
+    padding: 15px 20px 5px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.6rem;
+    color: var(--color-primario);
+    margin-bottom: 5px;
+}
+
+.mensaje-institucional {
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    margin-bottom: 8px;
+}
+
+.content {
+    padding: 5px 20px 25px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--color-primario);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+select, input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: var(--borde-radius);
+    font-size: 1rem;
+    background: white;
+    margin-bottom: 3px;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 3px rgba(197,160,71,0.2);
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: var(--borde-radius);
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #123321;
+}
+
+#resultado {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: var(--borde-radius);
+    display: none;
+}
+
+.exito {
+    background: #e8f5e9;
+    border-left: 4px solid var(--color-primario);
+}
+
+.error {
+    background: #ffe8e8;
+    border-left: 4px solid #cc0000;
+}
+
+.certificado-preview {
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+.certificado-info {
+    background: white;
+    padding: 15px;
+    border-radius: var(--borde-radius);
+    margin-bottom: 15px;
+}
+
+.certificado-info h3 {
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}
+
+.certificado-info p {
+    margin-bottom: 5px;
+}
+
+.certificado-datos {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.certificado-dato {
+    flex: 1;
+    min-width: 150px;
+    margin: 5px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 6px;
+}
+
+.pdf-preview-container {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 400px;
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (min-width: 768px) {
+    .logo {
+        height: 120px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        margin-top: 20px;
+    }
+    
+    .content {
+        padding: 15px 30px 30px;
+    }
+}
+
+@media (min-width: 992px) {
+    .logo {
+        height: 150px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .mensaje-institucional {
+        font-size: 1.1rem;
+    }
+}
+
+/* Agregar estos estilos al final del archivo CSS */
+
+.pdf-preview-container {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: auto;
+    background: #f9f9f9;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pdf-loading {
+    padding: 20px;
+    color: var(--color-primario);
+    font-weight: 500;
+}
+
+.pdf-error {
+    padding: 20px;
+    color: #cc0000;
+    text-align: center;
+}
+
+.pdf-error a {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.pdf-error a:hover {
+    text-decoration: underline;
+}
+
+canvas {
+    max-width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Contenedor principal imagen-descripción */
+.certificado-imagen-descripcion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+    align-items: center; /* Cambiado de flex-start a center */
+    justify-content: center; /* Centrado horizontal */
+}
+
+/* Estilos para el carrusel */
+
+.certificado-carrusel, 
+.certificado-descripcion-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px; /* Limita el ancho máximo */
+}
+
+.certificado-carrusel {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Transición de fade para el carrusel */
+
+.carrusel-container {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.carrusel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+.carrusel-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.carrusel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Controles del carrusel */
+.carrusel-controls {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    z-index: 10;
+}
+
+.carrusel-prev, .carrusel-next {
+    background: rgba(26, 71, 42, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+.carrusel-prev:hover, .carrusel-next:hover {
+    background: var(--color-primario);
+    transform: scale(1.1);
+}
+
+.carrusel-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.carrusel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.carrusel-dot.active {
+    background: var(--color-secundario);
+    transform: scale(1.2);
+}
+
+/* Estilos para la descripción */
+/* Ajuste específico para la descripción */
+.certificado-descripcion-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; /* Ocupa toda la altura disponible */
+    min-height: 250px; /* Altura mínima similar al carrusel */
+}
+
+.certificado-descripcion-container h4 {
+    color: var(--color-primario);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px dashed var(--color-secundario);
+}
+
+.certificado-descripcion-container p {
+    color: var(--color-texto);
+    line-height: 1.6;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Efecto hover para la descripción */
+.certificado-descripcion-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .certificado-imagen-descripcion {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .certificado-carrusel, 
+    .certificado-descripcion-container {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .certificado-descripcion-container {
+        min-height: auto;
+        padding: 20px;
+    }
+}
+
+.certificado-preview h3 {
+    color: var(--color-primario);
+    font-size: 1.5rem;
+    margin-bottom: 30px; /* Aumenté este margen */
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--color-secundario);
+    position: relative;
+    margin-top: 15px; /* Espacio superior añadido */
+}
+
+.certificado-preview h3::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--color-secundario);
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+}

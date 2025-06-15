@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Certificados - ICA Junín</title>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="imagenes/Logo ICAJ.png" class="logo">
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Certificados ICAJ</h1>
+            <p class="mensaje-institucional">Seleccione su curso e ingrese su DNI</p>
+        </div>
+
+        <div class="content">
+            <div class="formulario-busqueda">
+                <div class="form-group">
+                    <label for="evento">Evento:</label>
+                    <select id="evento">
+                        <option value="">-- Seleccionar evento --</option>
+                        <!-- Las opciones se cargarán dinámicamente desde JS -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="identificador">DNI:</label>
+                    <input type="text" id="identificador" placeholder="Ingrese su DNI" inputmode="numeric" maxlength="8">
+                </div>
+
+                <button id="btnBuscar">Buscar Certificado</button>
+            </div>
+
+            <div id="resultado"></div>
+            
+            <!-- Vista previa del certificado -->
+            <div id="certificadoPreview" class="certificado-preview">
+                <h3>Certificado encontrado</h3>
+                
+            <div class="certificado-imagen-descripcion">
+                <!-- Carrusel de imágenes -->
+                <div class="certificado-carrusel">
+                    <div class="carrusel-container">
+                        <div class="carrusel-slide active">
+                            <img src="imagenes/Dia-abogado-1.jpg" alt="Evento abogados 1">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="imagenes/Dia-abogado-2.jpg" alt="Evento abogados 2">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="imagenes/Dia-abogado-3.jpg" alt="Evento abogados 3">
+                        </div>
+                    </div>
+                    <div class="carrusel-controls">
+                        <button class="carrusel-prev">❮</button>
+                        <div class="carrusel-dots"></div>
+                        <button class="carrusel-next">❯</button>
+                    </div>
+                </div>
+                
+                <!-- Descripción -->
+                <div class="certificado-descripcion-container">
+                    <h4>Descripción</h4>
+                    <p>El día de abogados se celebró el 2 de Abril del 2025 en el Colegio de Abogados de Junín. Evento con destacados ponentes nacionales e internacionales.</p>
+                </div>
+            </div>
+
+                <div class="certificado-info">
+                    <div class="certificado-datos">
+                        <div class="certificado-dato">
+                            <strong>Evento:</strong>
+                            <p id="previewEvento"></p>
+                        </div>
+                        <div class="certificado-dato">
+                            <strong>Participante:</strong>
+                            <p id="previewNombre"></p>
+                        </div>
+                        <div class="certificado-dato">
+                            <strong>DNI:</strong>
+                            <p id="previewDNI"></p>
+                        </div>
+                        <div class="certificado-dato">
+                            <strong>Tipo:</strong>
+                            <p id="previewTipo"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="btnDescargar">📄 Descargar Certificado</button>
+                <div id="pdfPreview" class="pdf-preview-container">
+                    <!-- Vista previa del PDF se insertará aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF.js para visualización de PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
