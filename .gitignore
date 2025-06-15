@@ -134,3 +134,20 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Reglas adicionales para proyecto ICAJ
+
+# Excluir PDFs originales pero permitir los genéricos
+imagenes/certificados/dia-abogado-*.pdf
+!imagenes/certificados/certificado-generico-*.pdf
+
+# Excluir archivos personales
+*.pptx
+*.docx
+*.xlsx
+/datos-reales/
+/secrets/
+
+# Configuraciones privadas
+config-private.js
+.env
